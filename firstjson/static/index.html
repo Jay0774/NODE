@@ -1,0 +1,30 @@
+<html>
+<head></head>
+<body>
+<form action="/" method="POST" id="form">
+Email address:<br>
+<input type="email" class="form" name="email"></input><br>
+password:<br>
+<input type="password" class="form-control" name="password"></input><br>
+<button type="submit" class="btn">submit</button><br> 
+</form>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+$(document).ready(()={
+	$('#form').submit((e)={
+		e.preventDefault();
+		$.ajax({
+			url : '/',
+			type : 'post',
+			contentType : 'application/json' ,
+			data : JSON.stringfy(('#form').serializeArray()) ,
+			success : (response)=>{
+				console.log('sucessfully got response..');
+				console.log(response);
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>
